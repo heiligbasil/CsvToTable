@@ -27,24 +27,31 @@ def table_print(items):
 
 def table_html(items):
     """Output the items to screen into a format useful in a HTML table"""
-    print()
-    print("<tr>")
     column = 1
+    indent = " " * 2
+    print()
+    print(f"{indent}<tr>")
     for item in items:
-        print("<td style=\"text-align:center\">", end='')
+        print(f"{indent}{indent}<td style=\"text-align:center\">", end='')
         print(item.strip(), end='')
         print("</td>")
         column += 1
         if column > column_total:
-            print("</tr>")
-            print("<tr>")
+            print(f"{indent}</tr>")
+            print(f"{indent}<tr>")
             column = 1
-    print("</tr>")
+    print(f"{indent}</tr>")
 
 
 # Read in the contents of the .CSV file and split it into a list
-with open(sys.path[0] + '\\contents.csv') as f:
-    split_items = f.read().split(sep=',')
+# with open(sys.path[0] + '\\contents.csv') as f:
+#     split_items = f.read().split(sep=',')
+
+# Pick one of the ways to get the list ^ or v
+
+# Read in the contents of the .TEXT file and split it into a list
+with open(sys.path[0] + '\\contents.text') as f:
+    split_items = f.read().split(sep='\n')
 
 column_total = 1
 
